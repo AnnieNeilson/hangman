@@ -1,0 +1,66 @@
+
+body {
+    background-color: #f8ffb6;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    color: #0051ff;
+    text-align: center;
+}
+
+
+/*---heading---*/
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#wrong-guesses{
+    float: right;
+    padding-right: 15px;
+}
+
+
+/*--- game area ---*/
+.container{
+    color:white;
+}
+.game-area {
+    width: 85%;
+    height: 65vh;
+    background-color: #3877ff;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+#hangman{
+    background-color: blue;
+    width: 50%;
+    float: left;
+    height: fit-content;
+}
+#right-guesses{
+    width: 50%;
+    float: right;
+}
+
+/*--- letter area ---*/
+#letters{
+    width: 85%;
+    height: 15vh;
+    background-color: #3877ff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*--- buttons ---*/
+.alphabet{
+    padding: 5px;
+    margin: 3px;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    background-color: #5ee067;
+}
+/*-------------- need to fix this so it stays dark when another is clicked-- */
+.alphabet:visited {     
+    background-color:#436e46; 
+}
+

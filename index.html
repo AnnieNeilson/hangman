@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google Fonts links-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Hangman</title>
 </head>
 <body>
@@ -15,9 +16,12 @@
         <h1>Hangman</h1>
     </heading>
     <div class="categories"></div>
-    <div class="game-area">
-        <div id="hangman">image</div>
-        <div id="guess"></div>
+    <div class="container">
+        <div class="game-area">
+            <div id="hangman">image <br> image</div>
+            <div id="wrong-guesses">Wrong Guesses : <span id="mistakes">0</span> of <span id="max-wrong">8</span></div>
+            <div id="right-guesses">guess</div>
+        </div>
         <div id="letters">
             <button class="alphabet" id="letter-a">A</button>
             <button class="alphabet" id="letter-b">B</button>
@@ -49,6 +53,6 @@
     </div>
 
 
-    <script href="assets/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
