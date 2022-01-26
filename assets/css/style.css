@@ -19,6 +19,25 @@ body {
 }
 
 
+/*--- menu ---*/
+.menu{
+    width: 85%;
+    height:fit-content;
+    background-color: #3877ff;
+    margin-left: auto;
+    margin-right: auto;
+}
+.categories{
+    font-family: 'Mochiy Pop P One', sans-serif;
+    color: white;
+    background-color: #5ee067;
+    padding: 5px;
+    margin: 5px;
+}
+.categories:focus{
+    background-color:#436e46;
+}
+
 /*--- game area ---*/
 .container{
     color:white;
@@ -43,9 +62,9 @@ body {
 }
 
 /*--- letter area ---*/
-#letters{
+#keyboard{
     width: 85%;
-    height: 15vh;
+    height: 10vh;
     background-color: #3877ff;
     margin-left: auto;
     margin-right: auto;
@@ -63,4 +82,6 @@ body {
 .alphabet:visited {     
     background-color:#436e46; 
 }
+
+
 
