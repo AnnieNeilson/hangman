@@ -1,33 +1,54 @@
 document.addEventListener("DOMContentLoaded", function(){
     let menuButtons = document.getElementsByClassName('categories');
+    generateButtons();
 
     for (let button of menuButtons){
         button.addEventListener('click', function(){
             if(this.getAttribute("data-type") === "actors"){
                 randomActor();
-                
-            } else{
+            } else if(this.getAttribute("data-type") === "movies"){
+                randomMovie();
+            } else if(this.getAttribute("data-type") === "music"){
+                randomMusic();
+            } else if(this.getAttribute("data-type") === "all"){
+                randomAll();
+            }
+            else{
                 alert("didnt work :(");
             }
         })
     }
 });
 
+let answer = '';
+let maxWrong = 6;
+document.getElementById('max-wrong').innerHTML = maxWrong;
+let mistakes = 0;
+document.getElementById('mistakes').innerHTML = mistakes;
+let guessed = [ '/'];
+let wordStatus = null;
+
 function generateButtons(){
     let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter=>
-    
-    `<button class="alphabet" id="` + letter + `" onClick="handleGuess('` + letter + `')">
+    `<button class="alphabet" id="` + letter + `" value="` + letter + `" onClick="handleGuess('` + letter + `')">
     ` + letter + ` </button>`
     ).join('');
     document.getElementById('keyboard').innerHTML = buttonsHTML;
 };
 
-generateButtons();
 
-// function handleGuess(){
-//     let letter= this;
-//     alert(letter);
-// };
+
+function handleGuess(){
+    let letter= String(this);
+    alert(letter);
+    for (let i = 0; i < wordStatus.length; i++){
+        if (letter === i){
+
+
+        }   
+    }
+
+};
 
 
 
@@ -64,7 +85,7 @@ let moviesList = [
     "Jaws",
     "Casablanca",
     "Snow White",
-    "Black Panter",
+    "Black Panther",
     "Inception",
     "Blade Runner",
     "Mary Poppins",
@@ -104,11 +125,38 @@ let musicList  = [
     "Pearl Jam",
     "The Velvet Underground"
 ]
+/*--- functions to pick random words by category ---*/
 
 function randomActor(){
-    let answer = actorsList[Math.floor(Math.random() * 20)];
+    answer = actorsList[Math.floor(Math.random() * 20)];
     alert(answer);
-    return answer;  
+    console.log(answer);
+    convertWord();   
 }
+
+function randomMovie(){
+    answer = moviesList[Math.floor(Math.random() * 20)];
+    alert(answer);
+    console.log(answer);
+    convertWord();   
+}
+
+function randomMusic(){
+    answer = musicList[Math.floor(Math.random() * 20)];
+    alert(answer);
+    console.log(answer);
+    convertWord();   
+}
+
+/*--- function converts random word to underscores and slashes ---*/
+
+function convertWord(){
+    wordStatus = answer.split(' ').join('/');
+    alert(wordStatus);
+    hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+    document.getElementById('right-guesses').innerHTML = hiddenWord; 
+}
+
+
 
 

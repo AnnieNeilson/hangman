@@ -44,17 +44,20 @@ body {
 }
 .game-area {
     width: 85%;
-    height: 65vh;
+    height: 55vh;
     background-color: #3877ff;
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
 }
 #hangman{
-    background-color: blue;
     width: 50%;
     float: left;
-    height: fit-content;
+    height: auto;
+}
+#hangmanImg{
+    height:300px;
+    
 }
 #right-guesses{
     width: 50%;
