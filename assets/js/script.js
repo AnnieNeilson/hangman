@@ -23,13 +23,13 @@ document.addEventListener("DOMContentLoaded", function(){
 let answer = '';
 let maxWrong = 6;
 document.getElementById('max-wrong').innerHTML = maxWrong;
-let mistakes = 0;
-document.getElementById('mistakes').innerHTML = mistakes;
-let guessed = [ '/'];
+let errors = 0;
+document.getElementById('mistakes').innerHTML = errors;
+let guessed = ['/'];
 let wordStatus = null;
 
 function generateButtons(){
-    let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter=>
+    let buttonsHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter=>
     `<button class="alphabet" id="` + letter + `" value="` + letter + `" onClick="handleGuess('` + letter + `')">
     ` + letter + ` </button>`
     ).join('');
@@ -38,99 +38,118 @@ function generateButtons(){
 
 
 
-function handleGuess(){
-    let letter= String(this);
-    alert(letter);
-    for (let i = 0; i < wordStatus.length; i++){
-        if (letter === i){
-
-
-        }   
-    }
-
+function handleGuess(chosenLetter){
+    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
+    document.getElementById(chosenLetter).setAttribute('disabled', true);
+    if (answer.indexOf(chosenLetter) >= 0){
+        convertWord();
+        checkIfGameWon();
+    } else if (answer.indexOf(chosenLetter) === -1){
+        updateMistakes();
+        checkIfGameLost();
+    } 
 };
 
+
+function updateMistakes(){
+    let oldScore = parseInt(document.getElementById("mistakes").innerText);
+    document.getElementById("mistakes").innerText = ++oldScore;
+    ++errors;
+}
+
+function checkIfGameWon(){
+    let comparingWord = answer.split(' ').join('/');
+    if (hiddenWord === comparingWord){
+        alert('You Won!');
+    }
+} 
+
+function checkIfGameLost(){
+    if (errors == 6){
+        alert('You lost!')
+    }
+}
 
 
 
 
 /*--- lists of random words ---*/
 let actorsList = [
-    "Cate Blanchett",
-    "William Shatner",
-    "Christopher Lee",
-    "David Tennant",
-    "Catherine Tate",
-    "Tom Cruise",
-    "Julia Roberts",
-    "Ryan Reynolds",
-    "George Clooney",
-    "Will Arnett",
-    "Jennifer Anniston",
-    "Brad Pitt",
-    "Johnny Depp",
-    "Harrison Ford",
-    "Ian McKellen",
-    "Halle Berry",
-    "Mel Gibson",
-    "Emma Stone",
-    "Idris Elba",
-    "Rachel McAdams",
-    "Kate Winslet"
+    "CATE BLANCHETT",
+    "WILLIAM SHATNER",
+    "CHRISTOPHER LEE",
+    "DAVID TENNANT",
+    "CATHERINE TATE",
+    "TOM CRUISE",
+    "JULIA ROBERTS",
+    "RYAN REYNOLDS",
+    "GEORGE CLOONEY",
+    "WILL ARNETT",
+    "JENNIFER ANNISTON",
+    "BRAD PITT",
+    "JOHNNY DEPP",
+    "HARRISON FORD",
+    "IAN MCKELLEN",
+    "HALLE BERRY",
+    "MEL GIBSON",
+    "EMMA STONE",
+    "IDRIS ELBA",
+    "RACHEL MCADAMS",
+    "KATE WINSLET"
 ]
 
 let moviesList = [
-    "Shrek",
-    "Pretty Woman",
-    "Jaws",
-    "Casablanca",
-    "Snow White",
-    "Black Panther",
-    "Inception",
-    "Blade Runner",
-    "Mary Poppins",
-    "Donnie Darko",
-    "Pulp Fiction",
-    "To Kill A Mockingbird",
-    "King Kong",
-    "Back To The Future",
-    "Monty Python And The Holy Grail",
-    "Taxi Driver",
-    "Rear Window",
-    "Life Of Brian",
-    "Lawrence Of Arabia",
-    "Basil The Great Mouse Detective"
+    "SHREK",
+    "PRETTY WOMAN",
+    "JAWS",
+    "CASABLANCA",
+    "SNOW WHITE",
+    "BLACK PANTHER",
+    "INCEPTION",
+    "BLADE RUNNER",
+    "MARY POPPINS",
+    "DONNIE DARKO",
+    "PULP FICTION",
+    "TO KILL A MOCKINGBIRD",
+    "KING KONG",
+    "BACK TO THE FUTURE",
+    "MONTY PYTHON AND THE HOLY GRAIL",
+    "TAXI DRIVER",
+    "REAR WINDOW",
+    "LIFE OF BRIAN",
+    "LAWRENCE OF ARABIA",
+    "BASIL THE GREAT MOUSE DETECTIVE"
 ]
 
 let musicList  = [
-    "Beartooth",
-    "The Beatles",
-    "The Rolling Stones",
-    "Avenged Sevenfold",
-    "Led Zeppelin",
-    "Aerosmith",
-    "Red Hot Chili Peppers",
-    "Nine Inch Nails",
-    "Nirvana",
-    "The Clash",
-    "Queen",
-    "Lynyrd Skynyrd",
-    "Fleetwood Mac",
-    "Marilyn Manson",
-    "My Chemical Romance",
-    "Steely Dan",
-    "Foo Fighters",
-    "Public Enemy",
-    "Arcade Fire",
-    "Pearl Jam",
-    "The Velvet Underground"
+    "BEARTOOTH",
+    "THE BEATLES",
+    "THE ROLLING STONES",
+    "AVENGED SEVENFOLD",
+    "LED ZEPPELIN",
+    "AEROSMITH",
+    "RED HOT CHILI PEPPERS",
+    "NINE INCH NAILS",
+    "NIRVANA",
+    "THE CLASH",
+    "QUEEN",
+    "LYNYRD SKYNYRD",
+    "FLEETWOOD MAC",
+    "MARILYN MANSON",
+    "MY CHEMICAL ROMANCE",
+    "STEELY DAN",
+    "FOO FIGHTERS",
+    "PUBLIC ENEMY",
+    "ARCADE FIRE",
+    "PEARL JAM",
+    "THE VELVET UNDERGROUND"
 ]
 /*--- functions to pick random words by category ---*/
 
 function randomActor(){
     answer = actorsList[Math.floor(Math.random() * 20)];
-    alert(answer);
-    console.log(answer);
+    // document.getElementsByClassName('alphabet').setAttribute('disabled', false);  not a function
+    // guessed = ['/']; 
     convertWord();   
 }
 
@@ -152,7 +171,6 @@ function randomMusic(){
 
 function convertWord(){
     wordStatus = answer.split(' ').join('/');
-    alert(wordStatus);
     hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
     document.getElementById('right-guesses').innerHTML = hiddenWord; 
 }
