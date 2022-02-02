@@ -4,16 +4,24 @@ document.addEventListener("DOMContentLoaded", function(){
 
     for (let button of menuButtons){
         button.addEventListener('click', function(){
-            if(this.getAttribute("data-type") === "actors"){
+            if(this.getAttribute("id") === "actors"){
                 randomActor();
-            } else if(this.getAttribute("data-type") === "movies"){
+                document.getElementById('actors').innerHTML = 'Actors ✔';
+                document.getElementById('movies').innerHTML = 'Movies';
+                document.getElementById('music').innerHTML = 'Music';
+                
+            } else if(this.getAttribute("id") === "movies"){
                 randomMovie();
-            } else if(this.getAttribute("data-type") === "music"){
+                document.getElementById('movies').innerHTML = 'Movies ✔';
+                document.getElementById('actors').innerHTML = 'Actors';
+                document.getElementById('music').innerHTML = 'Music';
+
+            } else if(this.getAttribute("id") === "music"){
                 randomMusic();
-            } else if(this.getAttribute("data-type") === "all"){
-                randomAll();
-            }
-            else{
+                document.getElementById('music').innerHTML = 'Music ✔';
+                document.getElementById('movies').innerHTML = 'Movies';
+                document.getElementById('actors').innerHTML = 'Actors';
+            } else{
                 alert("Category not recognised");
             }
         })
@@ -180,8 +188,7 @@ function checkIfGameLost(){
 }
 
 function updateHangmanImage(){
-    alert(errors);
-    document.getElementById('hangmanImg').src= `assets/images/hangman-${errors}.png`;
+    document.getElementById('hangmanImg').src= `assets/images/hangman${errors}.png`;
 }
 
 function reset(){
@@ -191,6 +198,9 @@ function reset(){
     document.getElementById('right-guesses').innerHTML = '';
     document.getElementById('hangmanImg').src = 'assets/images/hangman.png';
     document.getElementById('mistakes').innerHTML= 0;
+    document.getElementById('actors').innerHTML = 'Actors';
+                document.getElementById('movies').innerHTML = 'Movies';
+                document.getElementById('music').innerHTML = 'Music';
     generateButtons();
 }
 
