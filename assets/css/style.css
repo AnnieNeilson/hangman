@@ -54,12 +54,15 @@ body {
     
 }
 #wrong-guesses{
+    width: 50%;
     float: right;
-    padding-right: 20%;
+    text-align: center;
+    padding-top: 5%;
 }
 #guess-area{
     width: 50%;
     float: right;
+    padding-top: 5%;
 }
 
 /*--- letter area ---*/
