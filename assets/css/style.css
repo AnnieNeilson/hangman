@@ -81,10 +81,7 @@ body {
     font-family: 'Mochiy Pop P One', sans-serif;
     background-color: #5ee067;
 }
-/*-------------- need to fix this so it stays dark when another is clicked-- */
-.alphabet:visited {     
-    background-color:#436e46; 
-}
+
 
 
 

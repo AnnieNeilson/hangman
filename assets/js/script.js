@@ -14,11 +14,13 @@ document.addEventListener("DOMContentLoaded", function(){
                 randomAll();
             }
             else{
-                alert("didnt work :(");
+                alert("Category not recognised");
             }
         })
     }
 });
+
+/*--- setting some things */
 
 let answer = '';
 let maxWrong = 6;
@@ -37,43 +39,6 @@ function generateButtons(){
     ).join('');
     document.getElementById('keyboard').innerHTML = buttonsHTML;
 };
-
-/*--- function to check if the letter is in the random word and respond appropriately ---*/
-
-function handleGuess(chosenLetter){
-    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-    document.getElementById(chosenLetter).setAttribute('disabled', true);
-    if (answer.indexOf(chosenLetter) >= 0){
-        convertWord();
-        checkIfGameWon();
-    } else if (answer.indexOf(chosenLetter) === -1){
-        updateMistakes();
-        checkIfGameLost();
-    } 
-};
-
-
-function updateMistakes(){
-    let oldScore = parseInt(document.getElementById("mistakes").innerText);
-    document.getElementById("mistakes").innerText = ++oldScore;
-    ++errors;
-}
-
-function checkIfGameWon(){
-    let comparingWord = answer.split(' ').join('/');
-    if (hiddenWord === comparingWord){
-        alert('You Won!');
-    }
-} 
-
-function checkIfGameLost(){
-    if (errors == 6){
-        alert('You lost!')
-    }
-}
-
-
-
 
 /*--- lists of random words ---*/
 let actorsList = [
@@ -150,22 +115,16 @@ let musicList  = [
 
 function randomActor(){
     answer = actorsList[Math.floor(Math.random() * 20)];
-    // document.getElementsByClassName('alphabet').setAttribute('disabled', false);  not a function
-    // guessed = ['/']; 
     convertWord();   
 }
 
 function randomMovie(){
     answer = moviesList[Math.floor(Math.random() * 20)];
-    alert(answer);
-    console.log(answer);
     convertWord();   
 }
 
 function randomMusic(){
     answer = musicList[Math.floor(Math.random() * 20)];
-    alert(answer);
-    console.log(answer);
     convertWord();   
 }
 
@@ -177,6 +136,54 @@ function convertWord(){
     document.getElementById('right-guesses').innerHTML = hiddenWord; 
 }
 
+/*--- function to check if the letter is in the random word and respond appropriately ---*/
 
+function handleGuess(chosenLetter){
+    if (answer === ''){
+        alert('You must pick a catergory before guessing')
+    } else{
+        guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
+        document.getElementById(chosenLetter).setAttribute('disabled', true);
+        if (answer.indexOf(chosenLetter) >= 0){
+            convertWord();
+            checkIfGameWon();
+        } else if (answer.indexOf(chosenLetter) === -1){
+            updateMistakes();
+            checkIfGameLost();
+        } 
+    }
+};
+
+
+function updateMistakes(){
+    let oldScore = parseInt(document.getElementById("mistakes").innerText);
+    document.getElementById("mistakes").innerText = ++oldScore;
+    ++errors;
+}
+
+function checkIfGameWon(){
+    let comparingWord = answer.split(' ').join('/');
+    if (hiddenWord === comparingWord){
+        alert('You Won!');
+        reset();
+    } 
+} 
+
+function checkIfGameLost(){
+    if (errors == 6){
+        alert('You lost!')
+        reset();
+    }
+}
+
+function reset(){
+    errors = 0;
+    guessed = ['/'];
+    answer = '';
+    document.getElementById('right-guesses').innerHTML = '';
+    document.getElementById('hangman').src = 'assets/images/hangman-1.png';
+    document.getElementById('mistakes').innerHTML= 0;
+    generateButtons();
+}
 
 
