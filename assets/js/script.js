@@ -114,16 +114,19 @@ let musicList  = [
 /*--- functions to pick random words by category ---*/
 
 function randomActor(){
+    reset();
     answer = actorsList[Math.floor(Math.random() * 20)];
     convertWord();   
 }
 
 function randomMovie(){
+    reset();
     answer = moviesList[Math.floor(Math.random() * 20)];
     convertWord();   
 }
 
 function randomMusic(){
+    reset();
     answer = musicList[Math.floor(Math.random() * 20)];
     convertWord();   
 }
@@ -140,7 +143,7 @@ function convertWord(){
 
 function handleGuess(chosenLetter){
     if (answer === ''){
-        alert('You must pick a catergory before guessing')
+        alert('You must pick a category before guessing')
     } else{
         guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
         document.getElementById(chosenLetter).setAttribute('disabled', true);
@@ -154,26 +157,31 @@ function handleGuess(chosenLetter){
     }
 };
 
-
 function updateMistakes(){
     let oldScore = parseInt(document.getElementById("mistakes").innerText);
     document.getElementById("mistakes").innerText = ++oldScore;
     ++errors;
+    updateHangmanImage();
 }
 
 function checkIfGameWon(){
     let comparingWord = answer.split(' ').join('/');
     if (hiddenWord === comparingWord){
-        alert('You Won!');
+        alert(`You Won! The answer was ${answer}!`);
         reset();
     } 
 } 
 
 function checkIfGameLost(){
     if (errors == 6){
-        alert('You lost!')
+        alert(`You Lost! The answer was ${answer}!`);
         reset();
     }
+}
+
+function updateHangmanImage(){
+    alert(errors);
+    document.getElementById('hangmanImg').src= `assets/images/hangman-${errors}.png`;
 }
 
 function reset(){
@@ -181,7 +189,7 @@ function reset(){
     guessed = ['/'];
     answer = '';
     document.getElementById('right-guesses').innerHTML = '';
-    document.getElementById('hangman').src = 'assets/images/hangman-1.png';
+    document.getElementById('hangmanImg').src = 'assets/images/hangman.png';
     document.getElementById('mistakes').innerHTML= 0;
     generateButtons();
 }
