@@ -13,10 +13,6 @@ body {
     font-size: 2.5rem;
 }
 
-#wrong-guesses{
-    float: right;
-    padding-right: 15px;
-}
 
 
 /*--- menu ---*/
@@ -59,7 +55,11 @@ body {
     height:300px;
     
 }
-#right-guesses{
+#wrong-guesses{
+    float: right;
+    padding-right: 20%;
+}
+#guess-area{
     width: 50%;
     float: right;
 }

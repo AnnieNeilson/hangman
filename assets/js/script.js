@@ -28,6 +28,8 @@ document.getElementById('mistakes').innerHTML = errors;
 let guessed = ['/'];
 let wordStatus = null;
 
+/*--- function to generate buttons for less busy html doc ---*/
+
 function generateButtons(){
     let buttonsHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter=>
     `<button class="alphabet" id="` + letter + `" value="` + letter + `" onClick="handleGuess('` + letter + `')">
@@ -36,7 +38,7 @@ function generateButtons(){
     document.getElementById('keyboard').innerHTML = buttonsHTML;
 };
 
-
+/*--- function to check if the letter is in the random word and respond appropriately ---*/
 
 function handleGuess(chosenLetter){
     guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
