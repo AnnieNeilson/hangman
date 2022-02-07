@@ -42,7 +42,7 @@ h2{
 }
 .game-area {
     width: 85%;
-    height: 50vh;
+    height: 400px;
     background-color: #3877ff;
     box-sizing: border-box;
     margin-left: auto;
@@ -54,7 +54,7 @@ h2{
     height: auto;
 }
 #hangmanImg{
-    height:45vh;
+    height:350px;
     
 }
 #wrong-guesses{
@@ -72,7 +72,7 @@ h2{
 /*--- letter area ---*/
 #keyboard{
     width: 85%;
-    height: 10vh;
+    height: fit-content;
     background-color: #3877ff;
     margin-left: auto;
     margin-right: auto;
@@ -95,6 +95,9 @@ h2{
     #hangman{
         float:none;
         width: 100%;
+    }
+    #hangmanImg{
+        height: 250px;
     }
     #wrong-guesses{
         width: 100%;
