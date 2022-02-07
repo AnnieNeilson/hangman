@@ -145,7 +145,7 @@ function randomMusic(){
 
 function convertWord(){
     wordStatus = answer.split(' ').join('/');
-    let hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+    hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
     document.getElementById('right-guesses').innerHTML = hiddenWord; 
 }
 
