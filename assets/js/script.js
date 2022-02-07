@@ -180,15 +180,17 @@ function updateMistakes(){
 function checkIfGameWon(){
     let comparingWord = answer.split(' ').join('/');
     if (hiddenWord === comparingWord){
-        alert(`You Won! The answer was ${answer}!`);
-        reset();
+        let youWon = `You Won! The answer was ${answer}! Choose a category to play again`;
+        document.getElementById('result').innerHTML = youWon;
+        disableButtons();
     } 
 } 
 
 function checkIfGameLost(){
     if (errors == 6){
-        alert(`You Lost! The answer was ${answer}!`);
-        reset();
+        let youLost = `You Lost! The answer was ${answer}! Choose a category to play again`;
+        document.getElementById('result').innerHTML = youLost;
+        disableButtons();
     }
 }
 
@@ -205,9 +207,16 @@ function reset(){
     document.getElementById('hangmanImg').src = 'assets/images/hangman.png';
     document.getElementById('mistakes').innerHTML= 0;
     document.getElementById('actors').innerHTML = 'Actors';
-                document.getElementById('movies').innerHTML = 'Movies';
-                document.getElementById('music').innerHTML = 'Music';
+    document.getElementById('movies').innerHTML = 'Movies';
+    document.getElementById('music').innerHTML = 'Music';
+    document.getElementById('result').innerHTML = '';
     generateButtons();
 }
 
+function disableButtons(){
+    let allButtons = document.getElementsByClassName('alphabet');
+    for( i in allButtons){
+        allButtons[i].setAttribute('disabled', true);
+    }
+}
 

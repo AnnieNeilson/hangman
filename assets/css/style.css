@@ -45,7 +45,7 @@ h2{
 }
 .game-area {
     width: 85%;
-    height: 400px;
+    height: 480px;
     background-color: #3877ff;
     box-sizing: border-box;
     margin-left: auto;
@@ -70,6 +70,10 @@ h2{
     width: 50%;
     float: right;
     padding-top: 5%;
+}
+#result{
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /*--- letter area ---*/
