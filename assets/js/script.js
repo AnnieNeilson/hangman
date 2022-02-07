@@ -24,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function(){
             } else{
                 alert("Category not recognised");
             }
-        })
+        });
     }
 });
 
-/*--- setting some things */
+// creating standard settings 
 
 let answer = '';
 let maxWrong = 6;
@@ -38,17 +38,18 @@ document.getElementById('mistakes').innerHTML = errors;
 let guessed = ['/'];
 let wordStatus = null;
 
-/*--- function to generate buttons for less busy html doc ---*/
-
+/**
+ * function to generate buttons efficiently
+ */
 function generateButtons(){
     let buttonsHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter=>
     `<button class="alphabet" id="` + letter + `" value="` + letter + `" onClick="handleGuess('` + letter + `')">
     ` + letter + ` </button>`
     ).join('');
     document.getElementById('keyboard').innerHTML = buttonsHTML;
-};
+}
 
-/*--- lists of random words ---*/
+// lists of random words
 let actorsList = [
     "CATE BLANCHETT",
     "WILLIAM SHATNER",
@@ -71,7 +72,7 @@ let actorsList = [
     "IDRIS ELBA",
     "RACHEL MCADAMS",
     "KATE WINSLET"
-]
+];
 
 let moviesList = [
     "SHREK",
@@ -94,7 +95,7 @@ let moviesList = [
     "LIFE OF BRIAN",
     "LAWRENCE OF ARABIA",
     "BASIL THE GREAT MOUSE DETECTIVE"
-]
+];
 
 let musicList  = [
     "BEARTOOTH",
@@ -118,8 +119,9 @@ let musicList  = [
     "ARCADE FIRE",
     "PEARL JAM",
     "THE VELVET UNDERGROUND"
-]
-/*--- functions to pick random words by category ---*/
+];
+
+//functions to pick random words by category
 
 function randomActor(){
     reset();
@@ -139,19 +141,21 @@ function randomMusic(){
     convertWord();   
 }
 
-/*--- function converts random word to underscores and slashes ---*/
+// function converts random word to underscores and slashes
 
 function convertWord(){
     wordStatus = answer.split(' ').join('/');
-    hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
+    let hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
     document.getElementById('right-guesses').innerHTML = hiddenWord; 
 }
 
-/*--- function to check if the letter is in the random word and respond appropriately ---*/
-
+/**
+ * function to check if the chosen letter has been guessed already, if it
+ * is in the random word and respond accordingly
+ */
 function handleGuess(chosenLetter){
     if (answer === ''){
-        alert('You must pick a category before guessing')
+        alert('You must pick a category before guessing');
     } else{
         guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
         document.getElementById(chosenLetter).setAttribute('disabled', true);
@@ -163,8 +167,9 @@ function handleGuess(chosenLetter){
             checkIfGameLost();
         } 
     }
-};
+}
 
+// increases the mistake counter and ends the game when it gets to 6
 function updateMistakes(){
     let oldScore = parseInt(document.getElementById("mistakes").innerText);
     document.getElementById("mistakes").innerText = ++oldScore;
@@ -191,6 +196,7 @@ function updateHangmanImage(){
     document.getElementById('hangmanImg').src= `assets/images/hangman${errors}.png`;
 }
 
+//resets the game so the user can play again
 function reset(){
     errors = 0;
     guessed = ['/'];
