@@ -30,6 +30,7 @@ body {
     padding: 5px;
     margin: 5px;
 }
+
 h2{
     padding-top: 2%;
 }
@@ -41,7 +42,7 @@ h2{
 }
 .game-area {
     width: 85%;
-    height: 55vh;
+    height: 50vh;
     background-color: #3877ff;
     box-sizing: border-box;
     margin-left: auto;
@@ -53,7 +54,7 @@ h2{
     height: auto;
 }
 #hangmanImg{
-    height:300px;
+    height:45vh;
     
 }
 #wrong-guesses{
@@ -87,6 +88,25 @@ h2{
     color:#140a72;
 }
 
+
+/*--- media queries ---*/
+
+@media screen and (max-width: 800px) {
+    #hangman{
+        float:none;
+        width: 100%;
+    }
+    #wrong-guesses{
+        width: 100%;
+
+    }
+    #guess-area{
+        width: 100%;
+    }
+    #keyboard{
+        height:fit-content;
+    }
+}
 
 
 
