@@ -39,6 +39,9 @@ h2{
 /*--- game area ---*/
 .container{
     color:white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .game-area {
     width: 85%;
@@ -92,6 +95,9 @@ h2{
 /*--- media queries ---*/
 
 @media screen and (max-width: 800px) {
+    .container{
+        width: 100%;
+    }
     #hangman{
         float:none;
         width: 100%;
