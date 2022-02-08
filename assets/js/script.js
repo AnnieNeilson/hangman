@@ -181,8 +181,14 @@ function updateMistakes(){
 
 function updateLoseCount(){
     let loseCount = parseInt(document.getElementById("lose-count").innerText);
-    alert(newLose);
+    alert(loseCount);
+    console.log(loseCount);
     document.getElementById("lose-count").innerText = ++loseCount;
+}
+
+function updateWinCount(){
+    let winCount = parseInt(document.getElementById("win-count").innerText);
+    document.getElementById("win-count").innerText = ++winCount;
 }
 
 function checkIfGameWon(){
@@ -190,9 +196,8 @@ function checkIfGameWon(){
     if (hiddenWord === comparingWord){
         let youWon = `Hurray! You won! The answer was ${answer}! Choose a category to play again`;
         document.getElementById('result').innerHTML = youWon;
+        updateWinCount();
         disableButtons();
-        let winCount = parseInt(document.getElementById("win-count").innerText);
-        document.getElementById("win-count").innerText = ++winCount;
     } 
 } 
 
@@ -200,8 +205,8 @@ function checkIfGameLost(){
     if (errors == 6){
         let youLost = `Oh No! You lost! The answer was ${answer}! Choose a category to play again`;
         document.getElementById('result').innerHTML = youLost;
-        disableButtons();
         updateLoseCount();
+        disableButtons(); 
     }
 }
 
@@ -231,5 +236,6 @@ function disableButtons(){
     for( i in allButtons){
         allButtons[i].setAttribute('disabled', '');
     }
+    
 }
 
