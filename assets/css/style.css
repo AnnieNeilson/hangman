@@ -60,11 +60,14 @@ h2{
     height:350px;
     
 }
+#total-score{
+    padding-top: 2%;
+}
 #wrong-guesses{
     width: 50%;
     float: right;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 2%;
 }
 #guess-area{
     width: 50%;
