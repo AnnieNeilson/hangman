@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function(){
 // creating standard settings 
 
 let answer = '';
+
+
 let maxWrong = 6;
 document.getElementById('max-wrong').innerHTML = maxWrong;
 let errors = 0;
@@ -177,22 +179,33 @@ function updateMistakes(){
     updateHangmanImage();
 }
 
+function updateLoseCount(){
+    let loseCount = parseInt(document.getElementById("lose-count").innerText);
+    alert(newLose);
+    document.getElementById("lose-count").innerText = ++loseCount;
+}
+
 function checkIfGameWon(){
     let comparingWord = answer.split(' ').join('/');
     if (hiddenWord === comparingWord){
-        let youWon = `You Won! The answer was ${answer}! Choose a category to play again`;
+        let youWon = `Hurray! You won! The answer was ${answer}! Choose a category to play again`;
         document.getElementById('result').innerHTML = youWon;
         disableButtons();
+        let winCount = parseInt(document.getElementById("win-count").innerText);
+        document.getElementById("win-count").innerText = ++winCount;
     } 
 } 
 
 function checkIfGameLost(){
     if (errors == 6){
-        let youLost = `You Lost! The answer was ${answer}! Choose a category to play again`;
+        let youLost = `Oh No! You lost! The answer was ${answer}! Choose a category to play again`;
         document.getElementById('result').innerHTML = youLost;
         disableButtons();
+        updateLoseCount();
     }
 }
+
+
 
 function updateHangmanImage(){
     document.getElementById('hangmanImg').src= `assets/images/hangman${errors}.png`;
@@ -216,7 +229,7 @@ function reset(){
 function disableButtons(){
     let allButtons = document.getElementsByClassName('alphabet');
     for( i in allButtons){
-        allButtons[i].setAttribute('disabled', true);
+        allButtons[i].setAttribute('disabled', '');
     }
 }
 
