@@ -1,108 +1,132 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hangman
 
-Welcome AnnieNeilson,
+[This link takes you to my project.](https://annieneilson.github.io/hangman/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+This is a game of hangman. The website has only one page. The game is suitable for all ages, it has a simplistic theme and colour scheme intended to be clear and light.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+On visiting the site the user is able to begin playing immediately, presented with a menu of buttons and told to 'Pick A Category!'. Once a category is chosen the game begins.
 
-## Gitpod Reminders
+![ami.responsivedesign.is screenshot](/docs/images/ami.responsivedesign.PNG)
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Features
 
-`python3 -m http.server`
+The heading is simple, large and bold. The font, sourced from Google Fonts, is 'Mochiy Pop P One'. I chose this font as it is easy to read, and has a playful style.
+The heading uses colours that fit with the sites colour scheme. There is no navigation menu as one is not required.
 
-A blue button should appear to click: _Make Public_,
+![screenshot of heading](/docs/images/heading.PNG)
 
-Another blue button should appear to click: _Open Browser_.
+### Category Menu
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The menu has a heading that very simply instructs the user in what to do to begin the game. Underneath are three options. When clicked a tick will appear next to the chosen category until a new category is selected. Immediately after a category is chosen a hidden word will appear below and the user can begin to guess.
 
-A blue button should appear to click: _Make Public_,
+![menu](/docs/images/menu.PNG)
+![menu clicked](/docs/images/menu-clicked.PNG)
 
-Another blue button should appear to click: _Open Browser_.
+### Game Area
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+The game area consists of three main parts. Each part has the same background colour (#3877ff) and all text uses the same font.  
+The first is the area for the hangman images. As more mistakes are made the image is updated.  
+The second is the scores area. Here the game keeps track of how many games have been won, how many games have been lost and how many mistakes have been made. Underneath this section is where the hidden word appears.  
+The third is the keyboard section. When the page loads it generates buttons to be used to input each guess. 
 
-To log into the Heroku toolbelt CLI:
+![game area](/docs/images/game-area.PNG)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+When the page first loads the user is encouraged to select a category. If the user attempts to guess a letter an alert will remind them to pick a category.  
+![alert](/docs/images/alert.PNG)  
+Once chosen, a random hidden word will appear above the keyboard.   
+![hidden word](/docs/images/gameplay-1.PNG)   
+The user will then make guesses, after each guess the selected button is disabled so the user cannot choose the same letter twice.  
+![letter picked](/docs/images/gameplay-2.PNG)  
+Each wrong guess will be counted and cause the hangman to appear more.   
+![wrong guess](/docs/images/gameplay-3.PNG)  
+If the user fails the result pops up to tell them they lost, reveal the answer and instruct them to choose a category if they wish to play again. The games lost counter will increase by one.   
+![loser result](/docs/images/gameplay-4.PNG)  
+If the user successfully guesses the word, the result pops up to congratulate them, affirm the answer and instruct them to choose a category if they wish to play again. The games won counter will increase by one.  
+![winner result](/docs/images/gameplay-5.PNG)
+When the game is over the keyboard buttons are all disabled.
+Selecting a category resets the game other than the games won/lost counter.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
-------
+## User Experience (UX)
+### User stories- User Goals
 
-## Release History
+As a site user:
+1. I want the site to look appealing and easy to understand.
+2. I want to easily understand how the game works.
+3. I want to keep track of my scores.
+4. I want the game to play efficiently with no lag or bugs.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+I fulfilled these goals by:
+1. Using an uncomplicated colour scheme, with mild colours that contrast well. I have kept the text used to a minimum, and the language clear and direct.
+2. Including any neccesary prompts written in a clear font with direct language. Not including superflous details or using alerts where not neccessary as that might hassle the user.
+3. Including a game score count so the scores can be clearly seen until the page is refreshed.
+4. I have run several tests to ensure the game runs smoothly and fixed any bugs I have encountered.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## Testing
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### Fixed Bugs
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+#### Disable Buttons Function
+The function disableButtons() initally worked, but it threw up the error *allButtons[i].setAttribute() is not a function* After searching through several articles on Stack Overflow, and similar sites, I asked my mentor for help who suggested using an if statement in my for loop.  
+Below is the two sections of code, the first throws the error, the second does not. 
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+![Both sets of code](/docs/images/bug-disableButtons.PNG)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+#### Background Image
+I had particular diificulty with the background image. It would load when the page was opened through the gitpod workspace port, but not on the deployed page. In DevTools a 404 error came up.
+* I tried finding the solution online with several articles recommending checking the link address, with the reminder it is case sensitive. This was not the issue
+* I tried using a .jpg instead of a .png
+* I tried compressing the image
+* I tried moving the code from the CSS file into a style tag in the head of the HTML file
+* A further look in DevTools showed that link to the image was showing as "https://annieneilson.github.io/assets/images/bg.jpg" when I manually changed the link to "https://annieneilson.github.io/hangman/assets/images/bg.jpg" in DevTools the background image appeared. I went to my CSS file and changed background-image to url(/hangman/assets/images/bg.jpg)
+This fixed the bug.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![background image bug](/docs/images/bug-backgroundimage.PNG)
+![background image bug fixed](/docs/images/bug-backgroundimage-1.PNG)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+### Unfixed Bugs
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+No unfixed bugs
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### Validator Testing
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+The Javascript code ran through jshint with no significant issues:
+![jshint report](/docs/images/jshint.PNG)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+The HTML file passed through the [W3 validator with no issues](https://validator.w3.org/nu/?doc=https%3A%2F%2Fannieneilson.github.io%2Fhangman%2F)
+![HTML validator results](/docs/images/html-validator.PNG)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+The CSS file passed through the [W3 validator with no issues](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fannieneilson.github.io%2Fhangman%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+![CSS validator results](/docs/images/css-validator.PNG)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+The LightHouse Report of the website came back very positive.  
+![Lighthouse report](/docs/images/lighthouse-report.PNG)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## Deployment
 
-------
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+* In the GitHub repository navigate to the Settings tab
+* From the source section drop-down menu, select the Master Branch
+* Once the master branch has been selected, the page provided the link to the completed website.
 
-## FAQ about the uptime script
+## Credits
 
-**Why have you added this script?**
+### Content
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+* I used [a Youtube tutorial](https://www.youtube.com/watch?v=dgvyE1sJS3Y&t=630s) to help me with some elements of the game. Specifically:
+1. The function that generates the buttons I had originally written out 26 lines of code in the HTML to create my own buttons, I found his method to be much more efficient.
+2. The function that handles guesses after any of the keyboard buttons are clicked.  
+3. The function that converts the word into underscores. I changed this code to accommodate the use of more than word, replacing spaces with forwards slashes.
+4. The function that updates the hangman image.   
+I did not copy his code exactly, using it more as inspiration for my own, though I did use some of his function names.
 
-**How will this affect me?**
+* I used the [Code Institute Love Maths project](https://www.youtube.com/watch?v=9sPrhBoTmSk) to create the functions that handle incrementing scores.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+* I used [favicon.io](https://favicon.io/favicon-converter/) to convert an image I made into a favicon.ico file.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+* I used a trick from [css-tricks](https://css-tricks.com/quick-css-trick-how-to-center-an-object-exactly-in-the-center/) to position the result div in the centre of the screen, adjusting the specifics to place it where I wanted.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+* I used code from [stack overflow](https://stackoverflow.com/questions/4919076/outline-effect-to-text) to put an outline on my heading text, changing the details to fit the look I wanted.
 
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+### Media
+The images for this project I created myself in GIMP as I wanted a very specific style. Also, to ensure the hangman images would transition flawlessly with each mistake the user makes.
