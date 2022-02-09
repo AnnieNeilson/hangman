@@ -28,8 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 });
 
-// creating standard settings 
-
+// declaring variables
 let answer = '';
 let hiddenWord = '';
 let maxWrong = 6;
@@ -39,9 +38,8 @@ document.getElementById('mistakes').innerHTML = errors;
 let guessed = ['/'];
 let wordStatus = null;
 
-/**
- * function to generate buttons efficiently
- */
+
+//function to generate buttons efficiently
 function generateButtons(){
     let buttonsHTML = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter=>
     `<button class="alphabet" id="` + letter + `" value="` + letter + `" onClick="handleGuess('` + letter + `')">
@@ -143,7 +141,6 @@ function randomMusic(){
 }
 
 // function converts random word to underscores and slashes
-
 function convertWord(){
     wordStatus = answer.split(' ').join('/');
     hiddenWord = wordStatus.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : " _ ")).join('');
@@ -170,7 +167,7 @@ function handleGuess(chosenLetter){
     }
 }
 
-// increases the mistake counter and ends the game when it gets to 6
+//when a wrong guess is made this function updates the mistake counter and calls the function to update the hangman image
 function updateMistakes(){
     let oldScore = parseInt(document.getElementById("mistakes").innerText);
     document.getElementById("mistakes").innerText = ++oldScore;
@@ -178,17 +175,19 @@ function updateMistakes(){
     updateHangmanImage();
 }
 
-
+//after a game is lost this function updates the number of games lost
 function updateLoseCount(){
     let loseCount = parseInt(document.getElementById("lose-count").innerText);
     document.getElementById("lose-count").innerText = ++loseCount;
 }
 
+//after a game is won this function updates the number of games won
 function updateWinCount(){
     let winCount = parseInt(document.getElementById("win-count").innerText);
     document.getElementById("win-count").innerText = ++winCount;
 }
 
+//each time a guess is made this function checks if the hidden word has been completed
 function checkIfGameWon(){
     let comparingWord = answer.split(' ').join('/');
     if (hiddenWord === comparingWord){
@@ -199,6 +198,7 @@ function checkIfGameWon(){
     } 
 } 
 
+//each time a guess is made this function checks if it has reached the max number of mistakes
 function checkIfGameLost(){
     if (errors == 6){
         let youLost = `Oh No! You lost! The answer was ${answer}! Choose a category to play again`;
@@ -208,7 +208,7 @@ function checkIfGameLost(){
     }
 }
 
-//
+//updates the hangman image with each mistake that is made
 function updateHangmanImage(){
     document.getElementById('hangmanImg').src= `assets/images/hangman${errors}.png`;
 }
