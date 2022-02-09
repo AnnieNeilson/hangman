@@ -3,7 +3,7 @@ body {
     color: white;
     text-align: center;
     min-height: 100%;
-    background-image: url("/assets/images/hangman.png");
+    background-image: url(/assets/images/bg.jpg);
     background-color: #f8ffb6;
 }
 
