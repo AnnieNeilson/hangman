@@ -15,22 +15,27 @@
     <h1>Hangman</h1>
     
     <div class="container">
+        <!-- menu for user to pick a category -->
         <div class="menu">
             <h2>Pick A Category!</h2>
             <button class="categories" id="actors">Actors</button>
             <button class="categories" id="movies">Movies</button>
             <button class="categories" id="music">Music</button>
-            
         </div>
+
         <div class="game-area">
-            
+            <!-- div containing hangman image -->
             <div id="hangman"><img id="hangmanImg" src="assets/images/hangman.png" alt="Hangman first image gallows"></div>
+            <!-- div that keeps track of the score of total games played -->
             <div id="total-score">Games Won : <span id="win-count">0</span><br>Games Lost : <span id="lose-count">0</span></div>
+            <!-- div that keeps track of the number of mistakes in each game -->
             <div id="wrong-guesses">Wrong Guesses : <span id="mistakes"> </span> of <span id="max-wrong"> </span></div>
+            <!-- div that shows the hidden word that needs to be guessed by the user -->
             <div id="guess-area"><p id="right-guesses"></p></div>
+            <!-- div that reveals whether the user won or lost at the end of the game -->
             <div id="result"></div>
-            
         </div>
+        <!-- div for generated buttons -->
         <div id="keyboard"></div>
         
     </div>

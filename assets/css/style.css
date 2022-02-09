@@ -1,4 +1,3 @@
-
 body {
     background-color: #f8ffb6;
     font-family: 'Mochiy Pop P One', sans-serif;
@@ -14,7 +13,6 @@ body {
 }
 
 
-
 /*--- menu ---*/
 .menu{
     width: 85%;
@@ -23,6 +21,7 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
 .categories{
     font-family: 'Mochiy Pop P One', sans-serif;
     color: white;
@@ -43,6 +42,7 @@ h2{
     margin-left: auto;
     margin-right: auto;
 }
+
 .game-area {
     width: 85%;
     height: 400px;
@@ -51,29 +51,34 @@ h2{
     margin-left: auto;
     margin-right: auto;
 }
+
 #hangman{
     width: 50%;
     float: left;
     height: auto;
 }
+
 #hangmanImg{
     height:350px;
-    
 }
+
 #total-score{
     padding-top: 2%;
 }
+
 #wrong-guesses{
     width: 50%;
     float: right;
     text-align: center;
     padding-top: 2%;
 }
+
 #guess-area{
     width: 50%;
     float: right;
     padding-top: 5%;
 }
+
 #result{
     float: right;
     width: 300px;
@@ -89,6 +94,7 @@ h2{
     font-size:x-large ;
 }
 
+
 /*--- letter area ---*/
 #keyboard{
     width: 85%;
@@ -97,7 +103,6 @@ h2{
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
-    
 }
 
 
@@ -117,26 +122,30 @@ h2{
     .container{
         width: 100%;
     }
+
     #hangman{
         float:none;
         width: 100%;
     }
+
     #hangmanImg{
         height: 250px;
     }
+
     #wrong-guesses{
         width: 100%;
-
     }
+
     #guess-area{
         width: 100%;
     }
+
     #keyboard{
         height:fit-content;
     }
+
     .game-area {
-        width: 85%;
-        
+        width: 85%;   
     }
     
 }
