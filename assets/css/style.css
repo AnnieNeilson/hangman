@@ -1,10 +1,10 @@
 body {
-    background-color: #f8ffb6;
     font-family: 'Mochiy Pop P One', sans-serif;
     color: white;
     text-align: center;
-    
     min-height: 100%;
+    background-image: url("/assets/images/background.png");
+    background-color: #f8ffb6;
 }
 
 
