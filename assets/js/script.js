@@ -229,6 +229,7 @@ function reset(){
     generateButtons();
 }
 
+//at the end of the game this disables the keyboard to avoid further guesses
 function disableButtons(){
     let allButtons = document.getElementsByClassName('alphabet');
     for(let i in allButtons){
