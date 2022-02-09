@@ -3,6 +3,7 @@ body {
     font-family: 'Mochiy Pop P One', sans-serif;
     color: #0051ff;
     text-align: center;
+    background-image: url("hangman-icon-bg.png") repeat;
 }
 
 
