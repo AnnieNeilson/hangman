@@ -1,17 +1,17 @@
 body {
     background-color: #f8ffb6;
     font-family: 'Mochiy Pop P One', sans-serif;
-    color: #0051ff;
+    color: white;
     text-align: center;
-    background-image: url("/assets/images/hangman-icon-bg.png1");
+    background-image: url("/assets/images/hangman-icon-bg-blue.png");
     min-height: 100%;
 }
 
 
 /*---heading---*/
-.heading {
-    text-align: center;
-    font-size: 2.5rem;
+h1{
+    text-shadow: -4px -4px 0 #0051ff, 4px -4px 0 #0051ff, -4px 4px 0 #0051ff, 4px 4px 0 #0051ff;
+    font-size:xxx-large;
 }
 
 
